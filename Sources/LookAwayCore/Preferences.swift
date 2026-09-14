@@ -48,11 +48,11 @@ public struct BlurIntensity: Equatable, Sendable {
 /// UserDefaults 的一层薄封装，只管数值，不认识 AppKit。
 public final class Preferences {
     private enum Key {
-        static let enabled = "duo.enabled"
-        static let marginAngle = "duo.marginAngle"
-        static let viewingDistance = "duo.viewingDistanceCM"
-        static let blurLevel = "duo.blurLevel"
-        static let fadeDuration = "duo.fadeDuration"
+        static let enabled = "lookaway.enabled"
+        static let marginAngle = "lookaway.marginAngle"
+        static let viewingDistance = "lookaway.viewingDistanceCM"
+        static let blurLevel = "lookaway.blurLevel"
+        static let fadeDuration = "lookaway.fadeDuration"
     }
 
     private let defaults: UserDefaults

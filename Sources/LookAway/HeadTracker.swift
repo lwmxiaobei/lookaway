@@ -1,6 +1,6 @@
 import AppKit
 import CoreMotion
-import DuoCore
+import LookAwayCore
 
 /// 包住 `CMHeadphoneMotionManager`，对外只吐「相对基准的偏航角」和连接状态。
 ///

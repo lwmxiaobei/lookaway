@@ -1,5 +1,5 @@
 import XCTest
-@testable import DuoCore
+@testable import LookAwayCore
 
 final class ScreenGeometryTests: XCTestCase {
     private func display(

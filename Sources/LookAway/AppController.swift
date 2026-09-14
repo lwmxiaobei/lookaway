@@ -1,6 +1,6 @@
 import AppKit
 import CoreMotion
-import DuoCore
+import LookAwayCore
 import ServiceManagement
 
 /// 把追踪、判定、遮罩和菜单栏串起来。
@@ -51,10 +51,10 @@ final class AppController: NSObject, NSMenuDelegate {
         NotificationCenter.default.removeObserver(self)
     }
 
-    /// MACDUO_SELFTEST=1 启动时自动预览一次遮罩，用于无 AirPods 的情况下验证遮罩链路。
+    /// LOOKAWAY_SELFTEST=1 启动时自动预览一次遮罩，用于无 AirPods 的情况下验证遮罩链路。
     private func runSelfTestIfRequested() {
-        guard ProcessInfo.processInfo.environment["MACDUO_SELFTEST"] == "1" else { return }
-        let seconds = ProcessInfo.processInfo.environment["MACDUO_SELFTEST_SECONDS"].flatMap(Double.init) ?? 3
+        guard ProcessInfo.processInfo.environment["LOOKAWAY_SELFTEST"] == "1" else { return }
+        let seconds = ProcessInfo.processInfo.environment["LOOKAWAY_SELFTEST_SECONDS"].flatMap(Double.init) ?? 3
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
             self?.startPreview(duration: seconds)
         }
@@ -290,7 +290,7 @@ final class AppController: NSObject, NSMenuDelegate {
         menu.addItem(login)
 
         menu.addItem(.separator())
-        let quit = NSMenuItem(title: "退出 mac-duo", action: #selector(quit), keyEquivalent: "q")
+        let quit = NSMenuItem(title: "退出 lookaway", action: #selector(quit), keyEquivalent: "q")
         quit.target = self
         menu.addItem(quit)
     }

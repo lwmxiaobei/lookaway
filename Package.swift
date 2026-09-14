@@ -2,22 +2,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "MacDuo",
+    name: "LookAway",
     platforms: [.macOS(.v14)],
     targets: [
         // 纯逻辑层：不依赖 AppKit / CoreMotion，可完整单测
         .target(
-            name: "DuoCore",
+            name: "LookAwayCore",
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .executableTarget(
-            name: "MacDuo",
-            dependencies: ["DuoCore"],
+            name: "LookAway",
+            dependencies: ["LookAwayCore"],
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),
         .testTarget(
-            name: "DuoCoreTests",
-            dependencies: ["DuoCore"],
+            name: "LookAwayCoreTests",
+            dependencies: ["LookAwayCore"],
             swiftSettings: [.swiftLanguageMode(.v5)]
         ),
     ]

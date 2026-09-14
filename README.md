@@ -1,4 +1,4 @@
-# mac-duo
+# lookaway
 
 转头就糊屏。用 AirPods 的空间音频陀螺仪判断你有没有正对着 Mac 屏幕，一旦转开就给整屏盖上毛玻璃，转回来自动散开。
 
@@ -77,8 +77,8 @@ NSScreen + CGDisplayScreenSize ─► ScreenGeometry ─视野─┘
 ## 开发
 
 ```
-Sources/DuoCore/     纯逻辑，不依赖 AppKit/CoreMotion，全部有单测
-Sources/MacDuo/      AppKit 层：追踪器、遮罩窗口、菜单栏
+Sources/LookAwayCore/     纯逻辑，不依赖 AppKit/CoreMotion，全部有单测
+Sources/LookAway/      AppKit 层：追踪器、遮罩窗口、菜单栏
 scripts/bundle.sh    组装 .app（写 Info.plist + 签名）
 ```
 
@@ -87,7 +87,7 @@ scripts/bundle.sh    组装 .app（写 Info.plist + 签名）
 ```bash
 make selftest        # 启动后自动遮 3 秒，没戴 AirPods 也能验证遮罩链路
 make debug-overlay   # 每块屏涂不同颜色并标注编号，遮 15 秒。分辨「窗口没到位」还是「毛玻璃没渲染」
-make trace           # 把每帧的 yaw、基准、偏离角、判定边界写进 /tmp/macduo-trace.csv
+make trace           # 把每帧的 yaw、基准、偏离角、判定边界写进 /tmp/lookaway-trace.csv
 ```
 
 `make trace` 是定位误触发的主力——零点偏了、边界算歪了、还是陀螺仪在漂，读一遍 CSV 就能分清，不用猜。
@@ -95,10 +95,10 @@ make trace           # 把每帧的 yaw、基准、偏离角、判定边界写�
 `make selftest` 的秒数可以调：
 
 ```bash
-open build/mac-duo.app --env MACDUO_SELFTEST=1 --env MACDUO_SELFTEST_SECONDS=12
+open build/lookaway.app --env LOOKAWAY_SELFTEST=1 --env LOOKAWAY_SELFTEST_SECONDS=12
 ```
 
-注意：**不能**直接执行 `build/mac-duo.app/Contents/MacOS/MacDuo`。那样 TCC 会把终端当作负责进程、查不到 `NSMotionUsageDescription`，进程会被系统直接杀掉。一律用 `open`。
+注意：**不能**直接执行 `build/lookaway.app/Contents/MacOS/LookAway`。那样 TCC 会把终端当作负责进程、查不到 `NSMotionUsageDescription`，进程会被系统直接杀掉。一律用 `open`。
 
 ## 还没做
 

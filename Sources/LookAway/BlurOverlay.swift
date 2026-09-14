@@ -1,5 +1,5 @@
 import AppKit
-import DuoCore
+import LookAwayCore
 
 /// 一块屏幕上的一层遮罩窗口：鼠标穿透、盖在一切之上、只负责显示毛玻璃。
 /// 同一块屏会摞好几层，靠层数把模糊半径叠上去。
@@ -50,7 +50,7 @@ private final class OverlayWindow: NSWindow {
         }
     }
 
-    /// MACDUO_DEBUG_OVERLAY=1 时给每块屏涂上不同颜色并标注编号，
+    /// LOOKAWAY_DEBUG_OVERLAY=1 时给每块屏涂上不同颜色并标注编号，
     /// 用来区分「窗口根本没到这块屏」和「窗口到了但毛玻璃没渲染」。
     private func applyDebugDecoration(index: Int, screen: NSScreen) {
         let colors: [NSColor] = [.systemRed, .systemGreen, .systemBlue, .systemOrange, .systemPurple]
@@ -104,7 +104,7 @@ final class OverlayController {
     /// 每块屏一摞窗口，stacks[屏][层]，层号越大摞得越上面。
     private var stacks: [[OverlayWindow]] = []
     private(set) var isObscured = false
-    private let isDebugging = ProcessInfo.processInfo.environment["MACDUO_DEBUG_OVERLAY"] == "1"
+    private let isDebugging = ProcessInfo.processInfo.environment["LOOKAWAY_DEBUG_OVERLAY"] == "1"
 
     private var allWindows: [OverlayWindow] { stacks.flatMap { $0 } }
 

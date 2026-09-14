@@ -1,5 +1,5 @@
 import XCTest
-@testable import DuoCore
+@testable import LookAwayCore
 
 final class BlurIntensityTests: XCTestCase {
     /// 总模糊当量：几层各自浓度加起来，粗略正比于最终的模糊半径

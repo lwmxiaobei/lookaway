@@ -5,9 +5,9 @@
 set -euo pipefail
 
 CONFIGURATION="${CONFIGURATION:-release}"
-APP_NAME="mac-duo"
-EXECUTABLE="MacDuo"
-BUNDLE_ID="dev.macduo.app"
+APP_NAME="lookaway"
+EXECUTABLE="LookAway"
+BUNDLE_ID="dev.lookaway.app"
 VERSION="${VERSION:-0.1.0}"
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -38,7 +38,7 @@ cat > "$APP_DIR/Contents/Info.plist" <<PLIST
 	<key>CFBundleName</key>
 	<string>$APP_NAME</string>
 	<key>CFBundleDisplayName</key>
-	<string>mac-duo</string>
+	<string>lookaway</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -50,9 +50,9 @@ cat > "$APP_DIR/Contents/Info.plist" <<PLIST
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSMotionUsageDescription</key>
-	<string>mac-duo 读取 AirPods 的头部姿态，用来判断你是否正对屏幕。姿态数据只在本机使用，不会离开这台设备。</string>
+	<string>lookaway 读取 AirPods 的头部姿态，用来判断你是否正对屏幕。姿态数据只在本机使用，不会离开这台设备。</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>mac-duo</string>
+	<string>lookaway</string>
 </dict>
 </plist>
 PLIST

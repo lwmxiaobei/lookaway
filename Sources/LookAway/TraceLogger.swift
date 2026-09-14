@@ -1,6 +1,6 @@
 import Foundation
 
-/// MACDUO_TRACE=1 时把每一帧姿态写成 CSV，用来诊断零点和判定边界。
+/// LOOKAWAY_TRACE=1 时把每一帧姿态写成 CSV，用来诊断零点和判定边界。
 /// 默认完全不启用，也不占任何开销。
 final class TraceLogger {
     private let handle: FileHandle?
@@ -11,9 +11,9 @@ final class TraceLogger {
     let path: String
 
     init?() {
-        guard ProcessInfo.processInfo.environment["MACDUO_TRACE"] == "1" else { return nil }
+        guard ProcessInfo.processInfo.environment["LOOKAWAY_TRACE"] == "1" else { return nil }
 
-        path = ProcessInfo.processInfo.environment["MACDUO_TRACE_PATH"] ?? "/tmp/macduo-trace.csv"
+        path = ProcessInfo.processInfo.environment["LOOKAWAY_TRACE_PATH"] ?? "/tmp/lookaway-trace.csv"
         FileManager.default.createFile(atPath: path, contents: nil)
         handle = FileHandle(forWritingAtPath: path)
         write(line: "time,rawYaw,baseline,deviation,leftBound,rightBound,state")
